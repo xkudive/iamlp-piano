@@ -717,6 +717,7 @@ body{
 	position: absolute;
 	opacity: 0;
 	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+	transition-delay: 0s;
 }
 
 .catalogue-blackout{
@@ -726,10 +727,6 @@ body{
 	background: #000;
 	opacity: 0;
 	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.catalogue-card:hover{
-
 }
 
 .catalogue-card:hover .catalogue-card-arrow{

@@ -673,6 +673,7 @@ body{
 }
 
 .catalogue-card{
+	object-fit: cover;
 	position: relative;
 	display: flex;
 	width: 270px;
@@ -721,4 +722,12 @@ body{
 
 .catalogue-card:hover .catalogue-blackout{
 	opacity: 0.4;
+}
+
+.catalogue-card > img{
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
 }

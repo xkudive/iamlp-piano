@@ -684,28 +684,8 @@ body{
 	text-decoration: none;
 	font-weight: 900;
 	text-transform: uppercase;
+	transform: translateZ();
 	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.catalogue-card:nth-child(1){
-	background: url(images/catalogue-1.jpg);
-	background-size: cover;
-	background-position: center center;
-}
-.catalogue-card:nth-child(2){
-	background: url(images/catalogue-2.jpg);
-	background-size: cover;
-	background-position: center center;
-}
-.catalogue-card:nth-child(3){
-	background: url(images/catalogue-3.jpg);
-	background-size: cover;
-	background-position: center center;
-}
-.catalogue-card:nth-child(4){
-	background: url(images/catalogue-4.jpg);
-	background-size: cover;
-	background-position: center center;
 }
 
 .catalogue-card-name{
@@ -730,6 +710,7 @@ body{
 
 .catalogue-card:hover .catalogue-card-arrow{
 	transform: translateX(0);
+	transition-delay: 0.3s;
 	opacity: 1;
 }
 

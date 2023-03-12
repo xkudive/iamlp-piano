@@ -814,6 +814,8 @@ body{
 }
 
 .in-stock{
+	display: flex;
+	align-items: center;
 	position: absolute;
 	bottom: 20px;
 	left: 20px;
@@ -851,6 +853,7 @@ body{
 	font-size: 14px;
 	font-weight: 700;
 	white-space: normal;
+	line-height: 150%;
 }
 
 .topsales-item-info-additions{
@@ -889,6 +892,7 @@ body{
 	display: flex;
 	align-items: center;
 	font-size: 10px;
+	cursor: pointer;
 }
 
 .item-info-additions-right span:first-child:before{
@@ -912,6 +916,11 @@ body{
 	gap: 32px;
 }
 
+.topsales-slider-indicator > img{
+	cursor: pointer;
+	padding: 16px;
+}
+
 .sales-slider-indicator{
 	display: flex;
 	gap: 8px;
@@ -922,6 +931,7 @@ body{
 	opacity: 0.4;
 	width: 4px;
 	height: 4px;
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 span.sales-slider-indicator-active{

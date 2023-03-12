@@ -6,4 +6,4 @@ window.addEventListener("load", () => {
         body.style.overflow = "visible";
         preloader.style.display = "none";
     }, 1000)
-}) 
+});

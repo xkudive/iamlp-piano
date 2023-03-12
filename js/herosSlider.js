@@ -5,12 +5,12 @@ const heroPianoAvailableColor = document.querySelector(".hero-about-info-piano-c
 const heroPianoCost = document.querySelector(".hero-about-info-piano-cost-var");
 
 function cards() {
-    for(let i = 0; i < heroCards.length; i++){
+    for(let i = 0; i < newGoodsAdded.length; i++){
         let imgBox = document.createElement("div");
         let img = document.createElement("img");
 
         imgBox.classList.add("hero-slider-image");
-        img.setAttribute("src",`images/${heroCards[i].image}`);
+        img.setAttribute("src",`images/${newGoodsAdded[i].image}`);
 
         imgBox.appendChild(img);
         imagesBox.appendChild(imgBox);
@@ -37,10 +37,10 @@ function imageSlider() {
     })
 
     let classListAdd = () => {
-        heroTitlePianoType.innerHTML = heroCards[indicatorIndex].title;
-        heroTitlePianoName.innerHTML = heroCards[indicatorIndex].name;
-        heroPianoAvailableColor.innerHTML = "Доступно в цвете: " + heroCards[indicatorIndex].color;
-        heroPianoCost.innerHTML = heroCards[indicatorIndex].cost + " ₽";
+        heroTitlePianoType.innerHTML = newGoodsAdded[indicatorIndex].title;
+        heroTitlePianoName.innerHTML = newGoodsAdded[indicatorIndex].name;
+        heroPianoAvailableColor.innerHTML = "Доступно в цвете: " + newGoodsAdded[indicatorIndex].color;
+        heroPianoCost.innerHTML = newGoodsAdded[indicatorIndex].cost + " ₽";
     }
 
     classListAdd();

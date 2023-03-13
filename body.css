@@ -756,7 +756,7 @@ body{
 	white-space: nowrap;
 	margin-bottom: 50px;
 	gap: 30px;
-	transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 	will-change: transform;
 }
 
@@ -910,6 +910,7 @@ body{
 }
 
 .topsales-slider-indicator{
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -934,12 +935,16 @@ body{
 	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-span.sales-slider-indicator-active{
-	width: 32px;
-	opacity: 1;
-}
-
 .slider-box{
 	display: flex;
 	overflow: hidden;
+}
+
+.topsales-indicator-active{
+	--items-visible: 1;
+	position: absolute;
+	height: 4px;
+	width: calc(var(--items-visible)*4px + (var(--items-visible) - 1)*8px);
+	background: #111111;
+	transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }

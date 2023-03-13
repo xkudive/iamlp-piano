@@ -1,4 +1,5 @@
 let topSalesSlider = document.querySelector(".topsales-goods-slider");
+let topSalesIndicatorActive = document.querySelector(".topsales-indicator-active");
 
 salesSort.forEach((elem, index)=> {
         let sliderItem = document.createElement("div");
@@ -97,7 +98,6 @@ let boxPos = 0;
 let sliderPos = 0;
 
 topSalesSlider.addEventListener("touchstart", (e) => {
-    document.body.style.overflow = "hidden";
     pressed = true;
     boxPos = sliderBox.getBoundingClientRect().x;
     startX = e.touches[0].clientX;
@@ -111,6 +111,11 @@ sliderBox.addEventListener("touchcancel", (e) => {
 topSalesSlider.addEventListener("touchend", (e) => {
     document.body.style.overflow = "visible";
     pressed = false;
+    setTimeout(() => {
+        topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;
+        if(pressed === true) return;
+        topSalesSlider.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*-300}px)`;
+    }, 300)
     if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
         topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
     };
@@ -120,6 +125,7 @@ topSalesSlider.addEventListener("touchend", (e) => {
 });
 
 topSalesSlider.addEventListener("touchmove", (e) => {
+    if(Math.abs(startX - e.touches[0].clientX) > 100) document.body.style.overflow = "hidden";
     if(pressed === false) return;
     sliderPos = topSalesSlider.getBoundingClientRect().x;
     topSalesSlider.style.transform = `translateX(${(startX - e.touches[0].clientX) * -1 + px}px)`;
@@ -129,6 +135,9 @@ let topSalesSliderIndicator = document.querySelector(".sales-slider-indicator");
 let sliderLeftBtn = document.querySelector(".slider-left-button");
 let sliderRightBtn = document.querySelector(".slider-right-button");
 sliderLeftBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;       
+    }, 300)
     let sliderTransform = Number((topSalesSlider.style.transform).replace("translateX(", "").replace("px)", ""));
     topSalesSlider.style.transform = `translateX(${sliderTransform + 300}px)`;
     setTimeout(() => {
@@ -137,9 +146,15 @@ sliderLeftBtn.addEventListener("click", () => {
         if (sliderPos > boxPos) {
             topSalesSlider.style.transform = `translateX(0px)`;
         }
+        if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
+            topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
+        };
     }, 200)
 })
 sliderRightBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;        
+    }, 300)
     let sliderTransform = Number((topSalesSlider.style.transform).replace("translateX(", "").replace("px)", ""));
     topSalesSlider.style.transform = `translateX(${sliderTransform - 300}px)`;
     setTimeout(() => {
@@ -148,6 +163,13 @@ sliderRightBtn.addEventListener("click", () => {
         if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
             topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
         };
+        if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
+            topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
+        };
     }, 200)
 })
+window.addEventListener("resize", () => {
+    topSalesIndicatorActive.style.setProperty("--items-visible", `${Math.round(sliderBox.getBoundingClientRect().width/300)}`)
+})
+topSalesIndicatorActive.style.setProperty("--items-visible", `${Math.round(sliderBox.getBoundingClientRect().width/300)}`)
 for(let i = 0; i < Array.from(topSalesSlider.children).length; i++) topSalesSliderIndicator.appendChild(document.createElement("span"));

@@ -1,7 +1,9 @@
 let topSalesSlider = document.querySelector(".topsales-goods-slider");
 let topSalesIndicatorActive = document.querySelector(".topsales-indicator-active");
+let sliderBox = document.querySelector(".slider-box");
+let topSalesContainer = document.querySelector(".container-topsales");
 
-salesSort.forEach((elem, index)=> {
+salesSort.forEach((elem, index) => {
         let sliderItem = document.createElement("div");
         let imageBox = document.createElement("a");
         let imageBoxImage = document.createElement("img");
@@ -90,15 +92,17 @@ salesSort.forEach((elem, index)=> {
         topSalesSlider.appendChild(sliderItem);
 });
 
-let sliderBox = document.querySelector(".slider-box");
 let pressed = false;
 let startX = 0;
 let px = 0;
 let boxPos = 0;
 let sliderPos = 0;
 
+sliderBox.style.width = `${Math.floor((topSalesContainer.clientWidth+30)/300)*300-30}px`;
+
 topSalesSlider.addEventListener("touchstart", (e) => {
     pressed = true;
+    topSalesSlider.style.transition = "0.5s cubic-bezier(0.075, 0.82, 0.165, 1)";
     boxPos = sliderBox.getBoundingClientRect().x;
     startX = e.touches[0].clientX;
     px = Number((topSalesSlider.style.transform).replace("translateX(", "").replace("px)", ""));
@@ -114,14 +118,19 @@ topSalesSlider.addEventListener("touchend", (e) => {
     setTimeout(() => {
         topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;
         if(pressed === true) return;
+        topSalesSlider.style.transition = "0.5s ease";
         topSalesSlider.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*-300}px)`;
     }, 300)
-    if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
-        topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
-    };
-    if (sliderPos > boxPos) {
-        topSalesSlider.style.transform = `translateX(0px)`;
-    }
+    setTimeout(() => {
+        if(pressed === true) return;
+        if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
+            topSalesIndicatorActive.style.transform = `translateX(${topSalesSliderIndicator.getBoundingClientRect().width - topSalesIndicatorActive.clientWidth}px)`;
+            topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
+        } else if (topSalesSlider.getBoundingClientRect().x > sliderBox.getBoundingClientRect().x){
+            topSalesIndicatorActive.style.transform = `translateX(0px)`;
+            topSalesSlider.style.transform = `translateX(0px)`;
+        }
+    }, 400)
 });
 
 topSalesSlider.addEventListener("touchmove", (e) => {
@@ -137,7 +146,7 @@ let sliderRightBtn = document.querySelector(".slider-right-button");
 sliderLeftBtn.addEventListener("click", () => {
     setTimeout(() => {
         topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;       
-    }, 300)
+    }, 500)
     let sliderTransform = Number((topSalesSlider.style.transform).replace("translateX(", "").replace("px)", ""));
     topSalesSlider.style.transform = `translateX(${sliderTransform + 300}px)`;
     setTimeout(() => {
@@ -154,7 +163,7 @@ sliderLeftBtn.addEventListener("click", () => {
 sliderRightBtn.addEventListener("click", () => {
     setTimeout(() => {
         topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;        
-    }, 300)
+    }, 500)
     let sliderTransform = Number((topSalesSlider.style.transform).replace("translateX(", "").replace("px)", ""));
     topSalesSlider.style.transform = `translateX(${sliderTransform - 300}px)`;
     setTimeout(() => {
@@ -170,6 +179,7 @@ sliderRightBtn.addEventListener("click", () => {
 })
 window.addEventListener("resize", () => {
     topSalesIndicatorActive.style.setProperty("--items-visible", `${Math.round(sliderBox.getBoundingClientRect().width/300)}`)
+    sliderBox.style.width = `${Math.floor((topSalesContainer.clientWidth+30)/300)*300-30}px`;
 })
 topSalesIndicatorActive.style.setProperty("--items-visible", `${Math.round(sliderBox.getBoundingClientRect().width/300)}`)
 for(let i = 0; i < Array.from(topSalesSlider.children).length; i++) topSalesSliderIndicator.appendChild(document.createElement("span"));

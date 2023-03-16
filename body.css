@@ -749,6 +749,7 @@ body{
 .container-topsales{
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 .topsales-goods-slider{

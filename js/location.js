@@ -1805,7 +1805,6 @@ getIPAddress("GET", IPRequestURL)
             xhr2.onerror = () => {
                 reject(xhr2.response);
             }
-
             xhr2.send();
         })
     }

@@ -43,7 +43,15 @@ salesSort.forEach((elem, index) => {
         newImage.setAttribute("src",`images/trophy.svg`);
         promoImage.setAttribute("src",`images/promotion.svg`);
         imageBox.setAttribute("href", `${elem.url}`);
-        imageBoxImage.setAttribute("src",`images/${elem.searchImg}`); 
+        imageBox.setAttribute("draggable",`false`);
+        newImage.setAttribute("draggable",`false`);
+        promoImage.setAttribute("draggable",`false`);
+        settingsImg.setAttribute("draggable",`false`);
+        favouriteImg.setAttribute("draggable",`false`);
+        additionsLeftImg.setAttribute("draggable",`false`);
+        sliderItemInfoName.setAttribute("draggable",`false`);
+        imageBoxImage.setAttribute("src",`images/${elem.searchImg}`);
+        imageBoxImage.setAttribute("draggable",`false`); 
         additionsLeftImg.setAttribute("src",`images/bag.svg`);
         settingsImg.setAttribute("src",`images/settings.svg`);
         favouriteImg.setAttribute("src",`images/favourite.svg`);
@@ -138,6 +146,69 @@ topSalesSlider.addEventListener("touchmove", (e) => {
     if(pressed === false) return;
     sliderPos = topSalesSlider.getBoundingClientRect().x;
     topSalesSlider.style.transform = `translateX(${(startX - e.touches[0].clientX) * -1 + px}px)`;
+});
+
+topSalesSlider.addEventListener("mousedown", (e) => {
+    pressed = true;
+    topSalesSlider.style.transition = "0.5s cubic-bezier(0.075, 0.82, 0.165, 1)";
+    boxPos = sliderBox.getBoundingClientRect().x;
+    startX = e.clientX;
+    px = Number((topSalesSlider.style.transform).replace("translateX(", "").replace("px)", ""));
+});
+
+sliderBox.addEventListener("mouseup", (e) => {
+    document.body.style.overflow = "visible";
+    pressed = false;
+    setTimeout(() => {
+        topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;
+        if(pressed === true) return;
+        topSalesSlider.style.transition = "0.5s ease";
+        topSalesSlider.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*-300}px)`;
+    }, 300)
+    setTimeout(() => {
+        if(pressed === true) return;
+        if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
+            topSalesIndicatorActive.style.transform = `translateX(${topSalesSliderIndicator.getBoundingClientRect().width - topSalesIndicatorActive.clientWidth}px)`;
+            topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
+        } else if (topSalesSlider.getBoundingClientRect().x > sliderBox.getBoundingClientRect().x){
+            topSalesIndicatorActive.style.transform = `translateX(0px)`;
+            topSalesSlider.style.transform = `translateX(0px)`;
+        }
+    }, 400)
+});
+
+window.addEventListener("mouseup", (e) => {
+    pressed = false;
+    document.body.style.overflow = "visible";
+    pressed = false;
+    setTimeout(() => {
+        topSalesIndicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*12}px)`;
+        if(pressed === true) return;
+        topSalesSlider.style.transition = "0.5s ease";
+        topSalesSlider.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - topSalesSlider.getBoundingClientRect().x)/300)*-300}px)`;
+    }, 300)
+    setTimeout(() => {
+        if(pressed === true) return;
+        if (window.innerWidth < (window.innerWidth - (topSalesSlider.getBoundingClientRect().width + topSalesSlider.getBoundingClientRect().x - (sliderBox.getBoundingClientRect().width + boxPos)))){
+            topSalesIndicatorActive.style.transform = `translateX(${topSalesSliderIndicator.getBoundingClientRect().width - topSalesIndicatorActive.clientWidth}px)`;
+            topSalesSlider.style.transform = `translateX(${-(topSalesSlider.getBoundingClientRect().width - sliderBox.getBoundingClientRect().width)}px)`;
+        } else if (topSalesSlider.getBoundingClientRect().x > sliderBox.getBoundingClientRect().x){
+            topSalesIndicatorActive.style.transform = `translateX(0px)`;
+            topSalesSlider.style.transform = `translateX(0px)`;
+        }
+    }, 400)
+});
+
+window.addEventListener("mousemove", (e) => {
+    if(pressed === false) return;
+    sliderPos = topSalesSlider.getBoundingClientRect().x;
+    topSalesSlider.style.transform = `translateX(${(startX - e.clientX) * -1 + px}px)`;
+});
+
+topSalesSlider.addEventListener("mousemove", (e) => {
+    if(pressed === false) return;
+    sliderPos = topSalesSlider.getBoundingClientRect().x;
+    topSalesSlider.style.transform = `translateX(${(startX - e.clientX) * -1 + px}px)`;
 });
 
 let topSalesSliderIndicator = document.querySelector(".sales-slider-indicator");

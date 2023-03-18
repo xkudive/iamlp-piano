@@ -26,16 +26,20 @@
 
 	<!-- Body -->
 
-    <nav class="navbar">
-		
+    <nav class="navbar" id="catalogue">
+
 			<span class="new-location"><img src="images/pin.svg" alt="">Магазины открыты по новому адресу</span>
+			
 			<div class="nav-middle">
 				<div class="container nav-mid-container">
 					<img src="images/logo-amlp.svg" alt="">
 					<div class="nav-middle-r-sec">
 						<span id="location">
 							<div class="nav-location">
-								<img src="images/location.svg" alt="">
+								<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 8.99478C8.604 8.99478 9.5 8.09934 9.5 6.99606C9.5 5.89278 8.604 4.99738 7.5 4.99738C6.396 4.99738 5.5 5.89278 5.5 6.99606C5.5 8.09934 6.396 8.99478 7.5 8.99478Z" stroke="white" stroke-linecap="square"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M13.5 6.99606C13.5 11.9928 8.5 14.9909 7.5 14.9909C6.5 14.9909 1.5 11.9928 1.5 6.99606C1.5 3.68522 4.187 1 7.5 1C10.813 1 13.5 3.68522 13.5 6.99606Z" stroke="white" stroke-linecap="square"/>
+								</svg>
 								<span id="city">Не определено</span>
 							</div>
 							<div class="location-select-wrapper">
@@ -57,15 +61,33 @@
 								</div>
 							</div>
 						</span>
-						<span class="number"><img src="images/phone.svg" alt="">998-(91)-199-34-84</span>
+						<a href="tel:998911993484" class="number">
+							<svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6 12H9M3.5 15H11.5C12.0523 15 12.5 14.5523 12.5 14V2C12.5 1.44772 12.0523 1 11.5 1H3.5C2.94772 1 2.5 1.44772 2.5 2V14C2.5 14.5523 2.94772 15 3.5 15Z" stroke="black"/>
+							</svg>998-(91)-199-34-84
+						</a>
+						<span class="burger-btn"><img src="images/burger.svg" alt=""></span>
+						<div class="burger-menu">
+							<div class="burger-bg-fade"></div>
+							<div class="burger-menu-content">
+								<div class="burger-top-section">
+									<img src="images/x-button.svg" alt="" class="burger-close-btn">
+								</div>
+							</div>
+							<div class="burger-bottom-section">
+								<a href="mailto:emin.yusupov.2006@mail.ru"><img src="images/at@.svg" alt="">emin.yusupov.2006@mail.ru</a>
+								<a href="https://t.me/xkudive" target="_blank"><img src="images/telegram.svg" alt="">@xkudive</a>
+								<a href="https://github.com/xkudive/" target="_blank"><img src="images/github.svg" alt="">xkudive</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="nav-main">
 				<div class="container nav-main-container">
 					<ul class="ul-menu">
-						<a href="#"><li><img src="images/burger.svg" alt="">Каталог</li></a>
-						<a href="#"><li>Доставка</li></a>
+						<a href="#catalogue"><li><img src="images/burger.svg" alt="">Каталог</li></a>
+						<a href="#delivery"><li>Доставка</li></a>
 						<a href="#"><li>Оплата</li></a>
 						<a href="#"><li>Акции</li></a>
 						<a href="#"><li>О нас</li></a>
@@ -76,7 +98,7 @@
 							<span class="search-btn"><img src="images/search.svg" alt=""></span>
 							<div class="search-top">
 								<div class="search-bg-fade"></div>
-								<span class="search-logo"><img src="images/search.svg" alt=""></span>
+								<span class="search-logo"><img src="images/x-button-white.svg" alt="" class="search-logo-img"></span>
 								<input class="search-input" type="text" placeholder="Найти (Press Enter)">
 								<span class="search-clear">Очистить</span>
 								<div class="search-list">
@@ -124,7 +146,7 @@
 	</header>
 	<div class="main">
 		
-		<div class="recommend">
+		<div class="recommend" id="recommend">
 			<div class="container container-recommend">
 				<span><img src="images/compass.svg" alt="">Доставка<br>по всей РФ</span>
 				<span><img src="images/certificate.svg" alt="">Официальный<br>дилер</span>
@@ -132,42 +154,44 @@
 				<span><img src="images/ok.svg" alt="">Индивидуальный<br>подбор инструмента</span>
 			</div>
 		</div>
-		<div class="catalogue">
+		<div class="catalogue" id="catalogue">
 			<div class="container container-catalogue">
-				<h1 class="catalogue-name">Наш каталог</h1>
+				<h1 class="h1">Наш каталог</h1>
 				<div class="catalogue-cards">
-					<a class="catalogue-card" href="#">
-						<img src="images/catalogue-1.jpg" alt="">
-						<span class="catalogue-blackout"></span>
-						<span class="catalogue-card-name">Цифровые пианино</span>
-						<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
-					</a>
-					<a class="catalogue-card" href="#">
-						<img src="images/catalogue-2.jpg" alt="">
-						<span class="catalogue-blackout"></span>
-						<span class="catalogue-card-name">Синтезаторы</span>
-						<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
-					</a>
-					<a class="catalogue-card" href="#">
-						<img src="images/catalogue-3.jpg" alt="">
-						<span class="catalogue-blackout"></span>
-						<span class="catalogue-card-name">Акустические пианино</span>
-						<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
-					</a>
-					<a class="catalogue-card" href="#">
-						<img src="images/catalogue-4.jpg" alt="">
-						<span class="catalogue-blackout"></span>
-						<span class="catalogue-card-name">Аксессуары</span>
-						<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
-					</a>
+						<a class="catalogue-card" href="#">
+							<img src="images/catalogue-1.jpg" alt="">
+							<span class="catalogue-blackout"></span>
+							<span class="catalogue-card-name">Цифровые пианино</span>
+							<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
+						</a>
+						<a class="catalogue-card" href="#">
+							<img src="images/catalogue-2.jpg" alt="">
+							<span class="catalogue-blackout"></span>
+							<span class="catalogue-card-name">Синтезаторы</span>
+							<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
+						</a>
+						<a class="catalogue-card" href="#">
+							<img src="images/catalogue-3.jpg" alt="">
+							<span class="catalogue-blackout"></span>
+							<span class="catalogue-card-name">Акустические пианино</span>
+							<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
+						</a>
+						<a class="catalogue-card" href="#">
+							<img src="images/catalogue-4.jpg" alt="">
+							<span class="catalogue-blackout"></span>
+							<span class="catalogue-card-name">Аксессуары</span>
+							<span class="catalogue-card-arrow"><img src="images/arrow-next.svg" alt=""></span>
+						</a>
 				</div>
 			</div>
 		</div>
-		<div class="topsales">
+		<div class="topsales" id="topsales">
 			<div class="container container-topsales">
-				<h1 class="topsales-name">Топ товаров</h1>
-				<div class="slider-box">
-					<div class="topsales-goods-slider" style="transform: translateX(0px);"></div>
+				<h1 class="h1">Топ товаров</h1>
+				<div class="slider-box-container">
+					<div class="slider-box">
+						<div class="topsales-goods-slider" style="transform: translateX(0px);"></div>
+					</div>
 				</div>
 				<div class="topsales-slider-indicator">
 					<img src="images/arrow-right-small.svg" alt="" style="rotate: 180deg;" class="slider-left-button">
@@ -177,6 +201,29 @@
 					<img src="images/arrow-right-small.svg" alt="" class="slider-right-button">
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<div class="delivery" id="delivery">
+		<div class="container delivery-container">
+			<div class="delivery-left-sec">
+				<h1 class="h1">Доставка</h1>
+				<div class="delivery-p-list">
+					<p>Мы доставляем наши товары по всей России, а некоторые бренды и по территории Таможенного Союза.</p>
+					<p>Если Вы находитесь в Москве или Санкт-Петербурге, возможны самовывоз по предварительному согласованию или доставка на выбранный адрес. </p>
+					<p>В другие города нам помогают доставлять транспортные компании.</p>
+				</div>
+			</div>
+			<div class="delivery-right-sec">
+				<p>Зачастую, если сумма покупки больше 15 000 руб., дополнительная оплата за доставку не требуется. </p>
+				<p>Но менеджер проговорит с Вами данный момент с учётом габаритов, веса и удаленности вашей доставки. </p>
+			</div>
+		</div>
+	</div>
+
+	<div class="work">
+		<div class="container work-container">
+			<h1 class="h1">Как работает наш магазин</h1>
 		</div>
 	</div>
 

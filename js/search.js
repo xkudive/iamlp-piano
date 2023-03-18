@@ -10,7 +10,7 @@ searchBtn.addEventListener('click', () => {
 
 document.addEventListener("click", e => {
     let element = e.target;
-    if(element.className === "search-bg-fade"){
+    if(element.className === "search-bg-fade" || element.className === "search-logo" || element.className === "search-logo-img"){
         searchBar.classList.remove('search-bar-active');
         let searchInput = document.querySelector(".search-input");
         searchInput.value = "";

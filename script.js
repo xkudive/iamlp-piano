@@ -1,9 +1,14 @@
+let navbar = document.querySelector(".navbar");
+let allContainer = document.querySelector(".container")
+
 window.addEventListener("load", () => {
     let body = document.body;
     body.classList.remove("preload");
     let preloader = document.querySelector('.preloader');
     navbarEdit();
     setTimeout(() => {
+        allContainer.style.overflow = "visible";
+        navbar.style.overflow = "visible";
         body.style.overflow = "visible";
         preloader.style.display = "none";
         navbarEdit();
@@ -20,12 +25,16 @@ let burgerMenuContent = document.querySelector(".burger-menu-content")
 let navMainContainer = document.querySelector(".nav-main-container");
 let navLocation = document.querySelector("#location");
 let navNumber = document.querySelector(".number");
-let navbar = document.querySelector(".navbar");
 let burgerTopSection = document.querySelector(".burger-top-section");
 let burgerBottomSection = document.querySelector(".burger-bottom-section");
 
 let burgerBtn = document.querySelector(".burger-btn");
 let burgerCloseBtn = document.querySelector(".burger-close-btn");
+let burgerBgFade = document.querySelector(".burger-bg-fade");
+
+burgerBgFade.addEventListener("click", () => {
+    burgerMenu.classList.remove("burger-active")
+})
 
 burgerBtn.addEventListener("click", () => {
     burgerMenu.classList.add("burger-active");

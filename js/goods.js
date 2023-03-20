@@ -41,7 +41,7 @@ let heroCards = [
     {
         title: "Кабинетный рояль",
         name : "Yamaha WWE 1100",
-        color : "коричневый, чёрный",
+        color : "белый, чёрный",
         cost : "99 890",
         image : "piano-4.png",
         url : "#",
@@ -66,8 +66,8 @@ let heroCards = [
         
     {
         title: "Кабинетный рояль",
-        name : "Yamaha WWE 1100",
-        color : "коричневый, чёрный",
+        name : "Yamaha YDP 145",
+        color : "белый",
         cost : "99 890",
         image : "piano-4.png",
         url : "#",

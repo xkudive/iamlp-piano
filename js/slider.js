@@ -56,7 +56,6 @@ let sliderAll = function(slider, sliderBox, sliderContainer, indicator, indicato
             indicatorActive.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - slider.getBoundingClientRect().x)/transformPixels)*12}px)`;
             if(pressed === true) return;
             slider.style.transition = "0.5s ease";
-            console.log(Math.round((sliderBox.getBoundingClientRect().x - slider.getBoundingClientRect().x)/transformPixels)*-transformPixels)
             slider.style.transform = `translateX(${Math.round((sliderBox.getBoundingClientRect().x - slider.getBoundingClientRect().x)/transformPixels)*-transformPixels}px)`;
         }, 300)
         setTimeout(() => {

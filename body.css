@@ -1093,6 +1093,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .work-box{
+	user-select: none;
 	flex-wrap: wrap;
 	display: flex;
 	gap: 30px;
@@ -1313,6 +1314,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .services-box{
+	user-select: none;
 	width: 100%;
 	display: flex;
 	gap: 30px;

@@ -1835,10 +1835,6 @@ locationNav.addEventListener("click", () => {
   locationWrapper.classList.add("location-select-wrapper-active");
 })
 
-locationClose.addEventListener("click", () => {
-  locationWrapper.classList.remove("location-select-wrapper-active");
-})
-
 for(let i = 0; i < COUNTRIES.length; i++){
   let name = COUNTRIES[i].name;
   let span = document.createElement("span");
@@ -1858,9 +1854,7 @@ document.addEventListener("click", e => {
     city.innerText = clickedElement.innerHTML;
     locationCity.innerText = clickedElement.innerText;
   }
-  if(clickedElement.className !== "location-droplist-item" && clickedElement.className !== "location-list-input"){
-    locationDropList.classList.remove('location-droplist-active');
-  }
+  if(clickedElement.className === "location-select-close-btn" || clickedElement.className === "location-bg-fade") locationWrapper.classList.remove("location-select-wrapper-active");
 })
 
 document.addEventListener('keyup', () => {
